@@ -7,8 +7,14 @@
 <body>
 <script>
 
-    class GameOver{
-        constructor()
+    class GameOver {
+        constructor();
+    }
+    this.gameOver = function (){
+        if (intervalId !== null) {
+        clearInterval(intervalId)
+
+    }
     }
 
 
