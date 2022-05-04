@@ -8,17 +8,34 @@
 <script>
 
     class GameOver {
-        constructor();
+        constructor() {
+
+        }
+
+        gameOver() {
+            if (intervalId !== null) {
+                clearInterval(intervalId)
+
+            }
+        }
     }
-    this.gameOver = function (){
-        if (intervalId !== null) {
-        clearInterval(intervalId)
 
+
+    class DrawScore {
+        constructor() {
+        }
     }
+
+    const drawScore = function () {
+        ctx.font = '30px IMPACT'
+        ctx.fillStyle = "#fff"
+        ctx.textAlign = "left"
+        ctx.textBaseline = 'top'
+        ctx.fillText("Рахунок: " + score, blockSize, blockSize)
     }
 
-
-
+    console.log(gameOver)
+    console.log(drawScore)
 
 
 </script>
