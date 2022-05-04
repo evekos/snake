@@ -1,0 +1,16 @@
+{
+  "name": "snake",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/evekos/snake.git",
+  "author": "Oleksii Kosynskyi <oleksii.kosynskyi@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "build": "rm -rf ./build && mkdir build && cp -r ./src ./build/src && cp -r ./index.html ./build/index.html",
+    "sync": "./node_modules/.bin/sls s3sync"
+  },
+  "devDependencies": {
+    "serverless": "^3.16.0",
+    "serverless-s3-sync": "^3.0.0"
+  }
+}

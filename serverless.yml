@@ -1,0 +1,50 @@
+service: snake
+plugins:
+  - serverless-s3-sync
+
+custom:
+  hostedZoneName: snake.eve.game.com
+  s3Sync:
+    - bucketName: ${self:custom.hostedZoneName}
+      localDir: build
+
+provider:
+  region: us-east-1
+  name: aws
+  stage: ${opt:stage, 'dev'}
+  environment:
+    bucketName: ${self:custom.hostedZoneName}
+resources:
+  Resources:
+    StaticWebSite:
+      Type: AWS::S3::Bucket
+      Properties:
+        AccessControl: PublicRead
+        BucketName: ${self:custom.hostedZoneName}
+        WebsiteConfiguration:
+          IndexDocument: index.html
+          ErrorDocument: index.html
+
+    StaticSiteS3BucketPolicy:
+      Type: AWS::S3::BucketPolicy
+      Properties:
+        Bucket:
+          Ref: StaticWebSite
+        PolicyDocument:
+          Statement:
+            - Sid: PublicReadGetObject
+              Effect: Allow
+              Principal: "*"
+              Action:
+                - s3:GetObject
+              Resource:
+                Fn::Join: [
+                  "", [
+                  "arn:aws:s3:::",
+                  {
+                    "Ref": "StaticWebSite"
+                  },
+                  "/*"
+                ]
+                ]
+
