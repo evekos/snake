@@ -13,14 +13,91 @@
     <script src="./src/classes/Snake.js"></script>
 </head>
 <body style="background: #000000;">
+
+
 <canvas id='canvas' width="800" height="800" ></canvas>
+<table>
+    <tr><td colspan="3" style="
+    text-align: center;
+"><button id="up"  type="button" style="
+    background: #ff1dc4;
+    border: 0;
+    color: #000;
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    font-size: 46px;
+    text-align: center;
+    padding-bottom: 7px;
+    vertical-align: middle;
+        cursor: pointer;
+">&#x2191;</button></td></tr>
+    <tr><td><button id="left" type="button" style="
+    background: #ff1dc4;
+    border: 0;
+    color: #000;
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    font-size: 46px;
+    text-align: center;
+    padding-bottom: 7px;
+    vertical-align: middle;
+        cursor: pointer;
+">&#x2190;</button></td><td><button id="down" type="button" style="
+    background: #ff1dc4;
+    border: 0;
+    color: #000;
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    font-size: 46px;
+    text-align: center;
+    padding-bottom: 7px;
+    vertical-align: middle;
+        cursor: pointer;
+">&#x2193;</button></td><td><button id="right" type="button" style="
+    background: #ff1dc4;
+    border: 0;
+    color: #000;
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    font-size: 46px;
+    text-align: center;
+    padding-bottom: 7px;
+    vertical-align: middle;
+        cursor: pointer;
+">&#x2192;</button></td></tr>
+</table>
+<button id="start" type="button" style="
+    background: #ff1dc4;
+    border: 0;
+    color: #000;
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    font-size: 25px;
+    text-align: center;
+    vertical-align: middle;
+        cursor: pointer;
+">START</button>
+
+
+
+
 <script src="./src/config.js"></script>
 
 
 
 <script>
     const game =  new Game()
-    game.loop()
+
+    const btnStart = document.getElementById("start")
+    btnStart.addEventListener('click',()=>{
+        game.loop()
+    })
+
 </script>
 </body>
 </html>

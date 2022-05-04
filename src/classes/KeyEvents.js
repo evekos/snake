@@ -13,6 +13,20 @@ class KeyEvents{
                 snake.setDirection(newDirection)
             }
         })
+       document.getElementById('left').addEventListener( 'click', ()=>{
+           snake.setDirection('left')
+       })
+        document.getElementById('right').addEventListener( 'click', ()=>{
+            snake.setDirection('right')
+
+        })
+        document.getElementById('up').addEventListener( 'click', ()=>{
+            snake.setDirection('up')
+        })
+        document.getElementById('down').addEventListener( 'click', ()=>{
+            snake.setDirection('down')
+        })
     }
+
 
 }
