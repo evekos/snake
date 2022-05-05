@@ -1,5 +1,5 @@
-class KeyEvents{
-    constructor(snake) {
+class KeyEvents {
+    constructor() {
         const directions = {
             37: "left",
             38: 'up',
@@ -7,26 +7,29 @@ class KeyEvents{
             40: 'down'
 
         }
-        $('body').keydown(function (event) {
+        $('body').keydown((event) => {
             let newDirection = directions[event.keyCode]
             if (newDirection !== undefined) {
-                snake.setDirection(newDirection)
+                this.setDirection(newDirection)
             }
         })
-       document.getElementById('left').addEventListener( 'touchstart', ()=>{
-           snake.setDirection('left')
-       })
-        document.getElementById('right').addEventListener( 'touchstart', ()=>{
-            snake.setDirection('right')
+        for (const dir of ['left', 'right', 'up', 'down']) {
+            document.getElementById(dir).addEventListener('click', () => {
+                this.setDirection(dir)
+            })
+            document.getElementById(dir).addEventListener('touchstart', () => {
+                this.setDirection(dir)
 
-        })
-        document.getElementById('up').addEventListener( 'touchstart', ()=>{
-            snake.setDirection('up')
-        })
-        document.getElementById('down').addEventListener( 'touchstart', ()=>{
-            snake.setDirection('down')
-        })
+            })
+        }
+
     }
 
+    setDirection(d) {
+        this.snake.setDirection(d)
+    }
 
+    setSnake(snake) {
+        this.snake = snake
+    }
 }
