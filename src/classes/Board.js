@@ -4,7 +4,7 @@ class Board {
     }
 
     drawBorder() {
-        ctx.fillStyle = '#fff'
+        ctx.fillStyle = "rgba(255,0,250)"
         ctx.fillRect(0, 0, width, blockSize)
         ctx.fillRect(0, height - blockSize, width, blockSize)
         ctx.fillRect(0, 0, blockSize, height)
