@@ -6,23 +6,50 @@ class Snake {
         this.segments = [
             new Block(7, 5),
             new Block(6, 5),
-            new Block(5, 5)
+            new Block(5, 5),
+            new Block(4, 5),
+            new Block(3, 5),
+            new Block(2, 5)
         ];
         this.direction = "right"
         this.nextDirection = "right"
 
     }
 
-    draw() {
-        for (let i = 1; i < this.segments.length; i++) {
-            if (i % 2 === 0) {
-                this.segments[i].drawSquare("Blue")
-            } else {
-                this.segments[i].drawSquare("Yellow")
+    getTailDirection(){
+        const tail = this.segments[this.segments.length - 1]
+        const last = this.segments[this.segments.length - 2]
 
+        if(last.col===tail.col){
+            if(last.row<tail.row){
+                return 'down'
+            }else{
+                return 'up'
             }
         }
-        this.segments[0].drawSquare('#afe800')
+        if(last.row===tail.row){
+            if(last.col<tail.col){
+                return 'right'
+            }else{
+                return 'left'
+            }
+        }
+    }
+    draw() {
+        this.segments[0].drawImg('snake/head-'+this.direction)
+        this.segments[this.segments.length - 1].drawImg('snake/tail-'+this.getTailDirection())
+
+
+        for (let i = 1; i < this.segments.length - 1; i++) {
+            if (i % 3 === 0) {
+                this.segments[i].drawImg("snake/body1")
+            } else if (i % 2 === 0) {
+                this.segments[i].drawImg("snake/body2")
+            } else {
+                this.segments[i].drawImg("snake/body3")
+            }
+
+        }
     }
 
     move() {
@@ -55,7 +82,7 @@ class Snake {
     }
 
     checkCollision(head) {
-        let leftCollision = (head.col <=0)
+        let leftCollision = (head.col <= 0)
         let topCollision = (head.row <= 0)
         let rightCollision = (head.col >= widthInBlocks - 1)
         let bottomCollision = (head.row >= heightInBlocks - 1)

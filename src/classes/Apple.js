@@ -1,6 +1,6 @@
 class Apple {
     draw () {
-        this.position.drawCircle("LimeGreen")
+        this.position.drawImg("apple")
     }
     move (snake) {
         let randomCol = Math.floor(Math.random() * (widthInBlocks - 2)) + 1
@@ -15,15 +15,6 @@ class Apple {
         }
         if(isAppleOnSnake === true){
             this.move(snake);
-        }
-    }
-    circle(x, y, radius, fillCircle) {
-        ctx.beginPath();
-        ctx.arc(x, y, radius, 0, Math.PI * 2, false);
-        if (fillCircle) {
-            ctx.fill();
-        } else {
-            ctx.stroke();
         }
     }
 }

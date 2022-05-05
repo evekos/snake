@@ -23,6 +23,15 @@ class Game {
 
     loop() {
         ctx.clearRect(0, 0, width, height)
+        if(score>=6){
+            this.board.drawBg('bg3')
+        }else if(score>=4){
+            this.board.drawBg('bg2')
+        }else if(score>=2){
+            this.board.drawBg('bg1')
+        }else{
+            this.board.drawBg('bg0')
+        }
         this.snake.draw()
         this.apple.draw()
         this.board.drawBorder()
