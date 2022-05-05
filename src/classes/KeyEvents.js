@@ -13,17 +13,17 @@ class KeyEvents{
                 snake.setDirection(newDirection)
             }
         })
-       document.getElementById('left').addEventListener( 'click', ()=>{
+       document.getElementById('left').addEventListener( 'touchstart', ()=>{
            snake.setDirection('left')
        })
-        document.getElementById('right').addEventListener( 'click', ()=>{
+        document.getElementById('right').addEventListener( 'touchstart', ()=>{
             snake.setDirection('right')
 
         })
-        document.getElementById('up').addEventListener( 'click', ()=>{
+        document.getElementById('up').addEventListener( 'touchstart', ()=>{
             snake.setDirection('up')
         })
-        document.getElementById('down').addEventListener( 'click', ()=>{
+        document.getElementById('down').addEventListener( 'touchstart', ()=>{
             snake.setDirection('down')
         })
     }
