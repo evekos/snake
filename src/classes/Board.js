@@ -2,9 +2,9 @@ class Board {
     constructor(onGameOver) {
        this.onGameOver=onGameOver
     }
-    drawBg(name){
+    drawBg(level){
         const baseImage = new Image();
-        baseImage.src = 'src/img/default/'+name+'.png';
+        baseImage.src = 'src/img/default/level'+level+'/bg.jpg';
         ctx.drawImage(baseImage, 0, 0);
     }
     drawBorder() {

@@ -1,6 +1,6 @@
 class Apple {
-    draw () {
-        this.position.drawImg("apple")
+    draw (level) {
+        this.position.drawImg(level,"apple")
     }
     move (snake) {
         let randomCol = Math.floor(Math.random() * (widthInBlocks - 2)) + 1

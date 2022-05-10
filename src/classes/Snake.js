@@ -2,6 +2,7 @@ class Snake {
     constructor(params) {
         this.apple = params.apple
         this.board = params.board
+        this.onCatchApple = params.onCatchApple
         this.animationTime = params.animationTime
         this.segments = [
             new Block(7, 5),
@@ -35,18 +36,18 @@ class Snake {
             }
         }
     }
-    draw() {
-        this.segments[0].drawImg('snake/head-'+this.direction)
-        this.segments[this.segments.length - 1].drawImg('snake/tail-'+this.getTailDirection())
+    draw(level) {
+        this.segments[0].drawImg(level, 'snake/head-'+this.direction)
+        this.segments[this.segments.length - 1].drawImg(level, 'snake/tail-'+this.getTailDirection())
 
 
         for (let i = 1; i < this.segments.length - 1; i++) {
             if (i % 3 === 0) {
-                this.segments[i].drawImg("snake/body1")
+                this.segments[i].drawImg(level,"snake/body1")
             } else if (i % 2 === 0) {
-                this.segments[i].drawImg("snake/body2")
+                this.segments[i].drawImg(level, "snake/body2")
             } else {
-                this.segments[i].drawImg("snake/body3")
+                this.segments[i].drawImg(level,"snake/body3")
             }
 
         }
@@ -72,6 +73,7 @@ class Snake {
         this.segments.unshift(newHead)
         if (newHead.equal(this.apple.position)) {
             score++
+            this.onCatchApple()
             this.apple.move(this)
             if (this.animationTime > 50) {
                 this.animationTime -= 5

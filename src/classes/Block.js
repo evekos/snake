@@ -17,12 +17,12 @@ class Block extends Draw{
         ctx.fillStyle = color
         this.circle(centerX, centerY, blockSize / 2, true)
     }
-    drawImg(name)    {
+    drawImg(level, name)    {
         let centerX = this.col * blockSize
         let centerY = this.row * blockSize
         const baseImage = new Image();
 
-        baseImage.src = 'src/img/default/'+name+'.png';
+        baseImage.src = 'src/img/default/level'+level+'/'+name+'.png'
         ctx.drawImage(baseImage, centerX, centerY);
     }
 

@@ -12,8 +12,17 @@ class Game {
         this.snake = new Snake({
             board: this.board,
             apple: this.apple,
-            animationTime: this.animationTime
+            animationTime: this.animationTime,
+            onCatchApple:()=>{
+                if (score % 2 ===0 && score > 0) {
+                    this.level++
+                    if (this.level >= 4) {
+                        this.level = 0
+                    }
+                }
+            }
         })
+        this.level = 0
         score = 0
         this.keyEvents.setSnake(this.snake)
         this.apple.move(this.snake)
@@ -24,16 +33,16 @@ class Game {
     loop() {
         ctx.clearRect(0, 0, width, height)
         if(score>=6){
-            this.board.drawBg('bg3')
+            this.board.drawBg(this.level)
         }else if(score>=4){
-            this.board.drawBg('bg2')
+            this.board.drawBg(this.level)
         }else if(score>=2){
-            this.board.drawBg('bg1')
+            this.board.drawBg(this.level)
         }else{
-            this.board.drawBg('bg0')
+            this.board.drawBg(this.level)
         }
-        this.snake.draw()
-        this.apple.draw()
+        this.snake.draw(this.level)
+        this.apple.draw(this.level)
         this.board.drawBorder()
         this.board.drawScore()
         this.snake.move()
@@ -55,4 +64,5 @@ class Game {
         this.isPlay = false
         this.hideKeyboard()
     }
+
 }

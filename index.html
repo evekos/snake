@@ -17,12 +17,15 @@
 <body style="background: #000000;">
 
 
-<canvas id='canvas' width="800" height="800" style="width:100%;margin: 0 auto;max-width: 600px;display: block;"></canvas>
+<canvas id='canvas' width="800" height="800"
+        style="width:100%;margin: 0 auto;max-width: 600px;display: block;"></canvas>
 <table id="keyboard" style="margin: 0 auto;">
-    <tr><td colspan="3" style="
+    <tr>
+        <td colspan="3" style="
     text-align: center;
-"><button id="up"  type="button" style="
-    background: #ff1dc4;
+">
+            <button id="up" type="button" style="
+    background: #ffffff;
     border: 0;
     color: #000;
     border-radius: 50%;
@@ -33,9 +36,14 @@
     padding-bottom: 7px;
     vertical-align: middle;
         cursor: pointer;
-">&#x2191;</button></td></tr>
-    <tr><td><button id="left" type="button" style="
-    background: #ff1dc4;
+">&#x2191;
+            </button>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <button id="left" type="button" style="
+    background: #ffffff;
     border: 0;
     color: #000;
     border-radius: 50%;
@@ -46,8 +54,12 @@
     padding-bottom: 7px;
     vertical-align: middle;
         cursor: pointer;
-">&#x2190;</button></td><td><button id="down" type="button" style="
-    background: #ff1dc4;
+">&#x2190;
+            </button>
+        </td>
+        <td>
+            <button id="down" type="button" style="
+    background: #ffffff;
     border: 0;
     color: #000;
     border-radius: 50%;
@@ -58,8 +70,12 @@
     padding-bottom: 7px;
     vertical-align: middle;
         cursor: pointer;
-">&#x2193;</button></td><td><button id="right" type="button" style="
-    background: #ff1dc4;
+">&#x2193;
+            </button>
+        </td>
+        <td>
+            <button id="right" type="button" style="
+    background: #ffffff;
     border: 0;
     color: #000;
     border-radius: 50%;
@@ -70,13 +86,16 @@
     padding-bottom: 7px;
     vertical-align: middle;
         cursor: pointer;
-">&#x2192;</button></td></tr>
+">&#x2192;
+            </button>
+        </td>
+    </tr>
 </table>
 <div style="margin: 0 auto;text-align: center;">
     <button id="start" type="button" style="
-    background: #ff00bc;
+    background: #ffffff;
     border: 0;
-    color: #000;
+    color: #ffd500;
     border-radius: 50%;
     width: 100px;
     height: 100px;
@@ -84,28 +103,26 @@
     text-align: center;
     vertical-align: middle;
         cursor: pointer;
-">START</button>
+">START
+    </button>
 </div>
-
-
-
 
 
 <script src="./src/config.js"></script>
 
 
-
 <script>
-    const game =  new Game()
+    const game = new Game()
 
     const btnStart = document.getElementById("start")
-    btnStart.addEventListener('click',()=>{
+    btnStart.addEventListener('click', () => {
         game.newGame()
     })
-    btnStart.addEventListener('touchstart',()=>{
+    btnStart.addEventListener('touchstart', () => {
         game.newGame()
     })
-   game.hideKeyboard()
+    game.hideKeyboard()
+
 
 </script>
 </body>
