@@ -15,8 +15,7 @@ jobs:
                   node-version: 16
             - uses: actions/checkout@v2
 
-            - run: yarn
-            - run: yarn build
-            - run: yarn sync
+            - run: yarn install --frozen-lockfile
+            - run: yarn deploy
 
 

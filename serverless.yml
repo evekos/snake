@@ -1,9 +1,15 @@
 service: snake
 plugins:
   - serverless-s3-sync
+  - serverless-cloudfront-invalidate
 
 custom:
   hostedZoneName: snake.eve.game.com
+  cloudfrontInvalidate:
+    distributionId: 'E3OCPEBC3M4UYX' #conditional, distributionId or distributionIdKey is required.
+    distributionIdKey: 'E3OCPEBC3M4UYX' #conditional, distributionId or distributionIdKey is required.
+    items: # one or more paths required
+      - '/*'
   s3Sync:
     - bucketName: ${self:custom.hostedZoneName}
       localDir: build
@@ -24,6 +30,8 @@ resources:
         WebsiteConfiguration:
           IndexDocument: index.html
           ErrorDocument: index.html
+    CDN:
+      Type: "AWS::CloudFront::Distribution"
 
     StaticSiteS3BucketPolicy:
       Type: AWS::S3::BucketPolicy
@@ -40,11 +48,16 @@ resources:
               Resource:
                 Fn::Join: [
                   "", [
-                  "arn:aws:s3:::",
-                  {
-                    "Ref": "StaticWebSite"
-                  },
-                  "/*"
+                    "arn:aws:s3:::",
+                    {
+                      "Ref": "StaticWebSite"
+                    },
+                    "/*"
+                  ]
                 ]
-                ]
+  Outputs:
+    CDNDistributionId:
+      Description: CDN distribution id.
+      Value:
+        Ref: CDN
 
