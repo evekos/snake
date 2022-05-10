@@ -5,20 +5,22 @@ class Game {
 
     }
     newGame(){
-        this.animationTime = 200
+        this.animationTime = 150
         this.board = new Board(this.gameOver.bind(this))
         this.apple = new Apple()
         this.isPlay = true
         this.snake = new Snake({
             board: this.board,
             apple: this.apple,
-            animationTime: this.animationTime,
             onCatchApple:()=>{
                 if (score % 2 ===0 && score > 0) {
                     this.level++
                     if (this.level >= 4) {
                         this.level = 0
                     }
+                }
+                if (this.animationTime > 30) {
+                    this.animationTime -= 10
                 }
             }
         })

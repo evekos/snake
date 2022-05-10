@@ -3,7 +3,6 @@ class Snake {
         this.apple = params.apple
         this.board = params.board
         this.onCatchApple = params.onCatchApple
-        this.animationTime = params.animationTime
         this.segments = [
             new Block(7, 5),
             new Block(6, 5),
@@ -43,11 +42,11 @@ class Snake {
 
         for (let i = 1; i < this.segments.length - 1; i++) {
             if (i % 3 === 0) {
-                this.segments[i].drawImg(level,"snake/body1")
+                this.segments[i].drawImg(level,"snake/body0")
             } else if (i % 2 === 0) {
-                this.segments[i].drawImg(level, "snake/body2")
+                this.segments[i].drawImg(level, "snake/body1")
             } else {
-                this.segments[i].drawImg(level,"snake/body3")
+                this.segments[i].drawImg(level,"snake/body2")
             }
 
         }
@@ -75,9 +74,6 @@ class Snake {
             score++
             this.onCatchApple()
             this.apple.move(this)
-            if (this.animationTime > 50) {
-                this.animationTime -= 5
-            }
         } else {
             this.segments.pop()
         }
