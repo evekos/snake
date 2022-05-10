@@ -18,6 +18,7 @@ class Game {
             board: this.board,
             apple: this.apple,
             onCatchApple:()=>{
+                document.getElementById("audio-apple").play();
                 if (score % 2 ===0 && score > 0) {
                     this.level++
                     if (this.level >= 4) {
@@ -68,6 +69,7 @@ class Game {
         $('#start').show()
     }
     gameOver(){
+        document.getElementById("audio-game-over").play();
         this.isPlay = false
         this.hideKeyboard()
     }

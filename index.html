@@ -107,7 +107,14 @@
     </button>
 </div>
 
-
+<audio id="audio-apple">
+    <source src="src/audio/apple.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+<audio id="audio-game-over">
+    <source src="src/audio/game-over.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
 <script src="./src/config.js"></script>
 
 
@@ -135,6 +142,7 @@
 		}
 		lastTouchEnd = now;
 	}, false);
+    document.getElementById("audio-apple").play();
 </script>
 </body>
 </html>
