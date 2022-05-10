@@ -1,5 +1,5 @@
 class KeyEvents {
-    constructor() {
+    constructor({newGame}) {
         const directions = {
             37: "left",
             38: 'up',
@@ -12,6 +12,9 @@ class KeyEvents {
             if (newDirection !== undefined) {
                 this.setDirection(newDirection)
             }
+            if(event.keyCode===32){
+                newGame()
+            }
         })
         for (const dir of ['left', 'right', 'up', 'down']) {
             document.getElementById(dir).addEventListener('click', () => {
@@ -19,7 +22,6 @@ class KeyEvents {
             })
             document.getElementById(dir).addEventListener('touchstart', () => {
                 this.setDirection(dir)
-
             })
         }
 

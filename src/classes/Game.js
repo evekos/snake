@@ -1,10 +1,15 @@
 class Game {
     constructor(){
-        this.keyEvents = new KeyEvents()
+        this.keyEvents = new KeyEvents({
+            newGame: this.newGame.bind(this)
+        })
         this.isPlay = false
 
     }
     newGame(){
+        if(this.isPlay){
+            return
+        }
         this.animationTime = 150
         this.board = new Board(this.gameOver.bind(this))
         this.apple = new Apple()
@@ -20,7 +25,7 @@ class Game {
                     }
                 }
                 if (this.animationTime > 30) {
-                    this.animationTime -= 10
+                    this.animationTime -= 5
                 }
             }
         })
